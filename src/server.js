@@ -8,7 +8,7 @@ const app = express();
 
 app.get("/:id/:user", (request, response) =>{
     //parametros, Route Params que não são obrigatórios
-    const {id, user} = request.params
+    const {id, user} = request.params;
 
     response.send(`ooooi, migo ${id} para o usuário: ${user}`)
 })
@@ -20,8 +20,6 @@ app.get("/users", (request, response)=>{
 
     response.send(`A pagina é ${page*2} e o limite é ${limit}`)
 })
-
-app.post()
 
 //a porta do node
 const PORT = 3333;
