@@ -9,4 +9,5 @@ class UserController {
 
 }
 
+//ex´prteo a classe para todo o projeto
 module.exports = UserController
