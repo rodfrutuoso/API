@@ -17,3 +17,7 @@ lá tem o user q direciona para o user.routes
 
 # controler
 Tem as rotas acionam os controlers específicos para realizar a parte "inteligente"
+
+# Middleware
+Ele faz a avaliação se a requisição feita eh válida ou não e repassa a informação caso ele autorize
+Geralmente a proxima função dps do middleware eh chamada de next
