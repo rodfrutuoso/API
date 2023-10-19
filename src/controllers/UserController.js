@@ -1,3 +1,4 @@
+//nome da classe igual ao do arquivo
 class UserController {
     /**
      * index - GET para listar vários registros
@@ -6,8 +7,12 @@ class UserController {
      * upadte - PUT para atualizar o registro
      * delete - DELETE para remover um registro
      */
+    create(request, response){
+        const { name, email, password } = request.body;
 
+        response.json({ name, email, password })
+    }
 }
 
-//ex´prteo a classe para todo o projeto
+//exporteo a classe para todo o projeto
 module.exports = UserController
