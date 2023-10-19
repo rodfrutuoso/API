@@ -4,6 +4,7 @@ const { Router } = require("express")
 //inicializa as rotas
 const userRoutes = Router()
 
+//método post
 userRoutes.post("/", (request, response) => {
     const { name, email, password } = request.body;
 

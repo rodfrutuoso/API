@@ -2,7 +2,7 @@
 //const que invoca a biblioteca express
 const express = require("express");
 
-//importação das rotas
+//importação das rotas. Já pega o index por padrão e a partir dele manda pro resto
 const routes = require("./routes")
 
 //inicializa o express pra poder usar
@@ -11,6 +11,7 @@ const app = express();
 //diz para o node que as informações vão vir em formato de json
 app.use(express.json())
 
+//direciona do server para a pasta de rotas
 app.use(routes)
 
 //a porta do node
