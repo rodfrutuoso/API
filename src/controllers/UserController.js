@@ -1,3 +1,5 @@
+const AppError = require("../utils/AppError")
+
 //nome da classe igual ao do arquivo
 class UserController {
     /**
@@ -10,6 +12,10 @@ class UserController {
     //função que realiza a criação do usuário
     create(request, response){
         const { name, email, password } = request.body;
+
+        if(!name){
+            throw new AppError("Nome é Obrigatório")
+        }
 
         response.status(201).json({ name, email, password })
     }

@@ -21,3 +21,8 @@ Tem as rotas acionam os controlers específicos para realizar a parte "inteligen
 # Middleware
 Ele faz a avaliação se a requisição feita eh válida ou não e repassa a informação caso ele autorize
 Geralmente a proxima função dps do middleware eh chamada de next
+
+# AppError
+Eh utilizada para devolver ao usuário mensagens de erros e para criar excessões para que requests não previstos
+não quebrem a aplicação
+Para instalar a biblioteca de erros uso npm install express-async-errors --save

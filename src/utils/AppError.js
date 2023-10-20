@@ -1,4 +1,6 @@
+//cria a classe do apperror
 class AppError {
+    //parametros que serão utilizados em toda classe
     message;
     statusCode;
 
