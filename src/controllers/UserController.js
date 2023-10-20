@@ -7,6 +7,7 @@ class UserController {
      * upadte - PUT para atualizar o registro
      * delete - DELETE para remover um registro
      */
+    //função que realiza a criação do usuário
     create(request, response){
         const { name, email, password } = request.body;
 

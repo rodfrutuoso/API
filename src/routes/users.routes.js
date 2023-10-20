@@ -11,7 +11,7 @@ const userController = new UserController()
 const userRoutes = Router()
 
 //coloco o middleware para todas as rotas com .use
-userRoutes.use(myMiddleware)
+//userRoutes.use(myMiddleware)
 
 //método post
 userRoutes.post("/",userController.create)
@@ -25,15 +25,15 @@ userRoutes.post("/",userController.create)
 
 // })
 
+//função do middleware
+// function myMiddleware(request,response,next){
+//     console.log("pasosu pelo middleware")
+//     if(!request.body.isAdmin){
+//         return response.status(401).json({message: "O usuário não é Administrador"})
+//     }
 
-function myMiddleware(request,response,next){
-    console.log("pasosu pelo middleware")
-    if(!request.body.isAdmin){
-        return response.status(401).json({message: "O usuário não é Administrador"})
-    }
-
-    next()
-}
+//     next()
+// }
 
 //exportando o arquivo pra outras pessoas poderem usar
 module.exports = userRoutes;
