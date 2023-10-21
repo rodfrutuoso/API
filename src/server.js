@@ -1,25 +1,22 @@
 //configurações do server
 
-//Seta como requisito do server
-require("express-async-errors")
+require("express-async-errors") //Seta como requisito do server
 
-//importa a biblioteca de erros
-const AppError = require("./utils/AppError")
+const database = require("./database/sqlite") //importa o arquivo do banco de dados
 
-//const que invoca a biblioteca express
-const express = require("express");
+const AppError = require("./utils/AppError") //importa pasta que trata os erros
 
-//importação das rotas. Já pega o index por padrão e a partir dele manda pro resto
-const routes = require("./routes")
+const express = require("express"); //const que invoca a biblioteca express
 
-//inicializa o express pra poder usar
-const app = express();
+const routes = require("./routes")//importação das rotas. Já pega o index por padrão e a partir dele manda pro resto
 
-//diz para o node que as informações vão vir em formato de json
-app.use(express.json())
+const app = express();//inicializa o express pra poder usar
 
-//direciona do server para a pasta de rotas
-app.use(routes)
+app.use(express.json())//diz para o node que as informações vão vir em formato de json
+
+app.use(routes) //direciona do server para a pasta de rotas
+
+database();
 
 //função que trata os erros
 app.use((error, request, response, next)=>{
@@ -40,11 +37,9 @@ app.use((error, request, response, next)=>{
 
 })
 
-//a porta do node
-const PORT = 3333;
+const PORT = 3333; //a porta do node
 
-//eh o que ele faz quando inicia
-app.listen(PORT, () => console.log(`Server está rodnado na porta ${PORT}`));
+app.listen(PORT, () => console.log(`Server está rodnado na porta ${PORT}`)); //eh o que ele faz quando inicia
 
 // app.get("/:id/:user", (request, response) =>{
 //     //parametros, Route Params que são obrigatórios

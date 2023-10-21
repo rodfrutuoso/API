@@ -26,3 +26,6 @@ Geralmente a proxima função dps do middleware eh chamada de next
 Eh utilizada para devolver ao usuário mensagens de erros e para criar excessões para que requests não previstos
 não quebrem a aplicação
 Para instalar a biblioteca de erros uso npm install express-async-errors --save
+
+# Banco de dados
+SQLite instalar: npm install sqlite3 sqlite --save
