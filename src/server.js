@@ -2,7 +2,7 @@
 
 require("express-async-errors") //Seta como requisito do server
 
-const database = require("./database/sqlite") //importa o arquivo do banco de dados
+const migrationsRun = require("./database/sqlite/migrations") //importa o arquivo do banco de dados
 
 const AppError = require("./utils/AppError") //importa pasta que trata os erros
 
@@ -16,7 +16,7 @@ app.use(express.json())//diz para o node que as informações vão vir em format
 
 app.use(routes) //direciona do server para a pasta de rotas
 
-database();
+migrationsRun();//executa a função do index.js migrationsRun
 
 //função que trata os erros
 app.use((error, request, response, next)=>{
