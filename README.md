@@ -43,3 +43,22 @@ create table users (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 ```
+
+## Aprendendo CRUD
+
+```
+INSERT INTO users
+(name, email, password)
+VALUES
+('Rodrigo', 'rodrigoo@gmail.com', '456');
+
+
+SELECT * from users 
+
+UPDATE users SET 
+avatar = 'rodrigoFrutuoso.png'
+where id = 1
+
+DELETE from users
+where id = 6
+```
