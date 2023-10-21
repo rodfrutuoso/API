@@ -29,3 +29,17 @@ Para instalar a biblioteca de erros uso npm install express-async-errors --save
 
 # Banco de dados
 SQLite instalar: npm install sqlite3 sqlite --save
+
+## criação de tabela no beekeeper
+
+```
+create table users (
+    id integer PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR,
+    email VARCHAR,
+    password VARCHAR,
+    avatar VARCHAR NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+```
