@@ -14,6 +14,9 @@ class UserController {
             throw new AppError("Esse email já está em uso")
         }
 
+        await database.run("INSERT INTO  users (name, email, password) VALUES (?, ?, ?)",
+        [name,email,password])
+
         return response.status(201).json();
     }
 }
