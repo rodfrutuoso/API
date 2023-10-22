@@ -1,5 +1,6 @@
 const sqliteConection = require("../database/sqlite");//importa a conexão com banco de dados
 const AppError = require("../utils/AppError") //importa biblioteca de erros
+const {hash} = require("bcryptjs")
 
 //nome da classe igual ao do arquivo
 class UserController {
@@ -14,8 +15,10 @@ class UserController {
             throw new AppError("Esse email já está em uso")
         }
 
+        const hashedPassword = await hash(password, 8)
+
         await database.run("INSERT INTO  users (name, email, password) VALUES (?, ?, ?)",
-        [name,email,password])
+        [name,email,hashedPassword])
 
         return response.status(201).json();
     }

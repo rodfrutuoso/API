@@ -62,3 +62,6 @@ where id = 1
 DELETE from users
 where id = 6
 ```
+
+# Criando uma criptografia para a senha
+npm install bcryptjs
