@@ -22,6 +22,44 @@ class UserController {
 
         return response.status(201).json();
     }
+
+    async update (request, response){
+        const {name, email} = request.body
+        const {id} = request.params;
+
+        const database = await sqliteConection() 
+        const user = await database.get("SELECT * FROM users WHERE id = (?)", [id])
+
+        if(!user){
+            throw new AppError("Usuário não encontrado")
+        }
+
+        const userWithUpdatedEmail = await database.get("SELECT * FROM users WHERE email = (?)",[email])
+
+        if(userWithUpdatedEmail && userWithUpdatedEmail.id !== user.id){
+            throw new AppError("Este email já está em uso")
+        }
+        
+        if(!userWithUpdatedEmail){
+
+        }else if(userWithUpdatedEmail.id == user.id){
+            throw new AppError("Este já é seu email atual")
+        }
+
+        user.name = name
+        user.email = email
+
+        await database.run(`
+        UPDATE users SET
+        name = ?,
+        email = ?,
+        updated_at = ?
+        WHERE id = ?`,
+        [user.name,user.email,new Date(), id])
+
+        return response.status(201).json()
+
+    }
 }
 
 //exporteo a classe para todo o projeto

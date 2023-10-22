@@ -15,6 +15,7 @@ const userRoutes = Router()
 
 //método post
 userRoutes.post("/",userController.create)
+userRoutes.put("/:id",userController.update)
 //userRoutes.post("/", myMiddleware,userController.create)
 
 // userRoutes.post("/", (request, response) => {
