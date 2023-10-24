@@ -65,3 +65,7 @@ where id = 6
 
 # Criando uma criptografia para a senha
 npm install bcryptjs
+
+# instalando query builder
+npm install knex --save
+npx knex init => para criar o arquivo e começar a configurar
