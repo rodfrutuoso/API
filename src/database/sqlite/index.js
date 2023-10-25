@@ -10,7 +10,7 @@ const path = require("path")//biblioteca de ajuste de caminho de arquivo pra nao
 async function sqliteConection(){
     //abre a conexão
     const database = await sqlite.open({
-        filename: path.resolve(__dirname,"..","database.bd"), //onde vai salvar o arquivo
+        filename: path.resolve(__dirname,"..","database.db"), //onde vai salvar o arquivo
         driver: sqlite3.Database //o drive de fato que vai fazer a conexão
     })
 
