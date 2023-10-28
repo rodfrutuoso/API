@@ -58,10 +58,10 @@ class NotesController {
         return response.status(201).json("Nota deletada")
     }
 
-    async index(request,response){
-        const {user_id} = request.query
-        
-        const notes = await knex("notes").where({user_id}).orderBy("title")
+    async index(request, response) {
+        const { title, user_id } = request.query
+
+        const notes = await knex("notes").where({ user_id }).whereLike("title",`%${title}%`).orderBy("title")
 
         response.status(200).json(notes)
 
