@@ -5,8 +5,8 @@ const AppError = require("../utils/AppError") //importa biblioteca de erros
 
 class NotesController {
     async create(request, response) {
-        const {title, description, tags, links} = request.body
-        const {user_id} = request.params;
+        const { title, description, tags, links } = request.body
+        const { user_id } = request.params;
 
         const [note_id] = await knex("notes").insert({
             title,
@@ -14,17 +14,17 @@ class NotesController {
             user_id
         })
 
-        const linksInsert = links.map(link =>{
-            return{
+        const linksInsert = links.map(link => {
+            return {
                 note_id,
-                url : link
+                url: link
             }
         })
 
         await knex("links").insert(linksInsert)
 
-        const tagsInsert = tags.map(name=>{
-            return{
+        const tagsInsert = tags.map(name => {
+            return {
                 name,
                 user_id,
                 note_id
@@ -36,18 +36,36 @@ class NotesController {
         response.status(201).json();
     }
 
-    async show(request,response){
-        const {id} = request.params
+    async show(request, response) {
+        const { id } = request.params
 
-        const note = await knex("notes").where({id}).first();
-        const tags = await knex("tags").where({note_id: id}).orderBy("name")
-        const links = await knex("links").where({note_id: id}).orderBy("created_at")
+        const note = await knex("notes").where({ id }).first();
+        const tags = await knex("tags").where({ note_id: id }).orderBy("name")
+        const links = await knex("links").where({ note_id: id }).orderBy("created_at")
 
         return response.status(200).json({
-            note,
+            ...note,
             tags,
             links
         })
+    }
+
+    async delete(request, response) {
+        const { id } = request.params
+
+        await knex("notes").where({ id }).delete()
+
+        return response.status(201).json("Nota deletada")
+    }
+
+    async index(request,response){
+        const {user_id} = request.query
+        
+        const notes = await knex("notes").where({user_id}).orderBy("title")
+
+        response.status(200).json(notes)
+
+
     }
 }
 
