@@ -11,14 +11,17 @@ module.exports = {
       filename: path.resolve(__dirname,"src","database", "database.db") 
     },
 
-    useNullAsDefault: true,
+    pool: {
+      afterCreate: (conn, cb) => conn.run("PRAGMA foreign_keys = ON", cb) //habilita o delete em cascata
+    },
+    
 
     migrations: {
       directory: path.resolve(__dirname,"src","database","knex","migrations")
     },
-    pool: {
-      afterCreate: (conn, cb) => conn.run("PRAGMA foreing_keys = ON", cb) //habilita o delete em cascata
-    }
+
+    useNullAsDefault: true
+    
   },
 
   // staging: {
