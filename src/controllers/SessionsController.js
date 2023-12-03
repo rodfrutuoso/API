@@ -1,11 +1,18 @@
+const { application } = require("express")
 const knex = require("../database/knex")
-const AppError = require("../utils/AppError") //importa biblioteca de erros
+const AppError = require("../utils/AppError") 
 
 class SessionsController {
     async create (request,response){
         const {email,password} = request.body
 
-        return response.json({email,password});
+        const [user] = await knex("users").where({email})
+
+        if(!user){
+            throw new AppError("Email e/ou senha incorreta",401)
+        }
+
+        return response.json(user);
     }
 }
 
