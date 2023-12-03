@@ -9,7 +9,7 @@ class TagsController{
         const tags = await knex("tags")
         .where({user_id})
 
-        response.status(200).json(tags)
+       return response.status(200).json(tags)
 
     }
 
