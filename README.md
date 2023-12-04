@@ -72,3 +72,10 @@ npx knex init => para criar o arquivo e começar a configurar
 npx knex migrate:make createNotes -> cria o arquivo de migração da tabela 
 npx knex migrate:latest => pega a migração e gera a tabela no BD
 como coloquei no package.json, dá pra fazer rodando npm run migrate
+
+# JWT - Json Web Token
+dividido em 3 partes: XXXX.YYYYY.ZZZZZ
+- Header
+- Payload
+- Verify Signature
+npm i jsonwebtoken
